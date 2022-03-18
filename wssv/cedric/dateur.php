@@ -17,14 +17,32 @@ elseif ($_GET['operation'] == 'previousDay'){
 elseif ($_GET['operation'] == 'previousMonth'){
 
     
-    $date = strtotime($_GET['lastDate']) - (60 * 60 * 24) ;
-    $dateToShow = date("d-m-Y", $date);
+    $date = strtotime($_GET['lastDate']);
+    $dateBefore = mktime(
+        date('G', $date),
+        date('i', $date),
+        date('s', $date),
+        date('n', $date)-1,
+        date('j', $date), 
+        date('Y', $date)
+    );
+    
+    $dateToShow = date('d-m-Y', $dateBefore);
 }
 elseif ($_GET['operation'] == 'previousYear'){
 
     
-    $date = strtotime($_GET['lastDate']) - (60 * 60 * 24 * 365) ;
-    $dateToShow = date("d-m-Y", $date);
+    $date = strtotime($_GET['lastDate']);
+    $dateBefore = mktime(
+        date('G', $date),
+        date('i', $date),
+        date('s', $date),
+        date('n', $date),
+        date('j', $date),
+        date('Y', $date)-1
+    );
+    
+    $dateToShow = date("d-m-Y", $dateBefore);
 }
 elseif ($_GET['operation'] == 'nextDay'){
 
@@ -37,17 +55,33 @@ elseif ($_GET['operation'] == 'nextDay'){
 elseif ($_GET['operation'] == 'nextMonth'){
 
     
-    $date = strtotime($_GET['lastDate']) + (60 * 60 * 24); 
+    $date = strtotime($_GET['lastDate']); 
+    $dateBefore = mktime(
+        date('G', $date),
+        date('i', $date),
+        date('s', $date),
+        date('n', $date)+1,
+        date('j', $date), 
+        date('Y', $date)
+    );
     
-    $dateToShow = date("d-m-Y", $date);
+    $dateToShow = date('d-m-Y', $dateBefore);
     
 }
 elseif ($_GET['operation'] == 'nextYear'){
 
     
-    $date = strtotime($_GET['lastDate']) + (60 * 60 * 24 * 365); 
+    $date = strtotime($_GET['lastDate']); 
+    $dateBefore = mktime(
+        date('G', $date),
+        date('i', $date),
+        date('s', $date),
+        date('n', $date),
+        date('j', $date), 
+        date('Y', $date)+1
+    );
     
-    $dateToShow = date("d-m-Y", $date);
+    $dateToShow = date('d-m-Y', $dateBefore);
     
 }
 ?>
