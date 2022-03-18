@@ -6,15 +6,14 @@ if (!isset($_GET['operation'])){
     
     $date = time();
     $dateToShow = date("d-m-Y", $date);
-} 
 
-elseif ($_GET['operation'] == 'previousDay'){
+} elseif ($_GET['operation'] == 'previousDay'){
 
     
     $date = strtotime($_GET['lastDate']) - (60 * 60 * 24) ;
     $dateToShow = date("d-m-Y", $date);
-}
-elseif ($_GET['operation'] == 'previousMonth'){
+
+} elseif ($_GET['operation'] == 'previousMonth'){
 
     
     $date = strtotime($_GET['lastDate']);
@@ -28,8 +27,8 @@ elseif ($_GET['operation'] == 'previousMonth'){
     );
     
     $dateToShow = date('d-m-Y', $dateBefore);
-}
-elseif ($_GET['operation'] == 'previousYear'){
+
+} elseif ($_GET['operation'] == 'previousYear'){
 
     
     $date = strtotime($_GET['lastDate']);
@@ -43,16 +42,15 @@ elseif ($_GET['operation'] == 'previousYear'){
     );
     
     $dateToShow = date("d-m-Y", $dateBefore);
-}
-elseif ($_GET['operation'] == 'nextDay'){
+
+} elseif ($_GET['operation'] == 'nextDay'){
 
     
     $date = strtotime($_GET['lastDate']) + (60 * 60 * 24); 
     
     $dateToShow = date("d-m-Y", $date);
     
-}
-elseif ($_GET['operation'] == 'nextMonth'){
+} elseif ($_GET['operation'] == 'nextMonth'){
 
     
     $date = strtotime($_GET['lastDate']); 
@@ -67,8 +65,7 @@ elseif ($_GET['operation'] == 'nextMonth'){
     
     $dateToShow = date('d-m-Y', $dateBefore);
     
-}
-elseif ($_GET['operation'] == 'nextYear'){
+} elseif ($_GET['operation'] == 'nextYear'){
 
     
     $date = strtotime($_GET['lastDate']); 
@@ -94,6 +91,9 @@ elseif ($_GET['operation'] == 'nextYear'){
     </head>
     <body>
     <main>
+        <h1>La juste date</h1>
+        <p>Au départ, le script PHP dateur.php affiche la date du jour au format jj/mm/aaaa. Lorsque l'internaute clique sur un lien intitulé Jour suivant ou sur un lien intitulé Jour précédent, 
+            la date affichée doit être mise à jour en conséquence. Faites de même pour les liens Mois suivant/précédent et Année suivante/précédente.</p>
         <button class="less"><a  href="dateur.php?operation=previousYear&lastDate=<?= $dateToShow ?>" >Année précédente</a></button>
         <button class="less"><a  href="dateur.php?operation=previousMonth&lastDate=<?= $dateToShow ?>" >Mois précédent</a></button>
         <button class="less"><a  href="dateur.php?operation=previousDay&lastDate=<?= $dateToShow ?>" >Jour précédent</a></button>
