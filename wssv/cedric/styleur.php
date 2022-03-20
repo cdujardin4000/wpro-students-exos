@@ -15,9 +15,19 @@ if (isset($_GET['style'])){
         $styled = str_replace($_GET['style'], "", $_GET['previous']);
         //$styled = $_GET['previous'] -= $_GET['style'];
         var_dump($styled);
-    } else {
-        $styled = $_GET['previous'] .= $_GET['style'];
-        var_dump($styled);
+    } else{
+        if  (str_contains($_GET['previous'], "style=color:black") && $_GET['style'] ==  "style=color:red") {
+            $styled = str_replace($_GET['style'], "", $_GET['previous']);
+            $styled .= "style=color:red";
+        }
+        elseif (str_contains($_GET['previous'], "style=color:red") && $_GET['style'] ==  "style=color:black") {
+            $styled = str_replace($_GET['style'], "", $_GET['previous']);
+            $styled .= "style=color:black";
+        }
+        else{
+            $styled = $_GET['previous'] .= $_GET['style'];
+            var_dump($styled);
+        }      
     }
 }
 ?>
